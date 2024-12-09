@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    container_name: nginx_container
+    ports:
+      - "8080:80"
+    networks:
+      - app_network
+
+  redis:
+    image: "redis:alpine"
+    container_name: redis_container
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
